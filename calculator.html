@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .logo{
+            position: absolute;
+            top: 0%;
+            left: 2px;
+        }
+        p{
+            font-size: 60px;
+            font-style: italic;
+            text-transform: lowercase;
+            top: 5px;
+            position: absolute;
+            font-weight: 600;
+            color: brown;
+        }
+        .calculator {
+            border: 3px solid #0e0c0c;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(6, 5, 5, 0.1);
+            width:400px;
+        }
+        .screen {
+            background-color: #fcf4f4;
+            font-size: 3em;
+            padding: 10px;
+            text-align: right;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        button {
+            font-size: 2em;
+            padding: 10px;
+            border: 2px solid #090606;
+            cursor: pointer;
+        }
+        .operator {
+            background-color: #940606;
+            color: #faf7f7;
+        }
+        
+    </style>
+    <title>Simple Calculator</title>
+</head>
+<body>
+    <div class="logo">
+        <img src="Capture.jpg" alt="SNEGA">
+    </div>
+    <div class="text">
+        <p>SIMPLE CALCULATOR</p>
+    </div>
+<div class="calculator">
+    <div class="screen" id="output">0</div>
+    <div class="buttons">
+        <button class="operator" onclick="clearOutput()">C</button>
+        <button onclick="appendInput('7')">7</button>
+        <button onclick="appendInput('8')">8</button>
+        <button onclick="appendInput('9')">9</button>
+        <button class="operator" onclick="setOperator('/')">/</button>
+
+        <button onclick="appendInput('4')">4</button>
+        <button onclick="appendInput('5')">5</button>
+        <button onclick="appendInput('6')">6</button>
+        <button class="operator" onclick="setOperator('*')">*</button>
+
+        <button onclick="appendInput('1')">1</button>
+        <button onclick="appendInput('2')">2</button>
+        <button onclick="appendInput('3')">3</button>
+        <button class="operator" onclick="setOperator('-')">-</button>
+
+        <button onclick="appendInput('0')">0</button>
+        <button onclick="appendInput('.')">.</button>
+        <button class="operator" onclick="calculate()">=</button>
+        <button class="operator" onclick="setOperator('+')">+</button>
+    </div>
+</div>
+
+<script>
+    let currentInput = '';
+let operator = '';
+let outputElement = document.getElementById('output');
+
+function appendInput(value) {
+    currentInput += value;
+    updateOutput();
+}
+
+function setOperator(op) {
+    operator = op;
+    currentInput += ' ' + op + ' ';
+    updateOutput();
+}
+
+function calculate() {
+    let result = eval(currentInput);
+    currentInput = result.toString();
+    updateOutput();
+}
+
+function clearOutput() {
+    currentInput = '';
+    operator = '';
+    updateOutput();
+}
+
+function updateOutput() {
+    outputElement.textContent = currentInput;
+}
+
+</script>
+</body>
+</html>

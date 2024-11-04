@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Editor Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        
+        body{
+        
+            background-color: rgb(130, 128, 128);
+            color: #fff;
+            height: 100vh;
+        }
+        
+        .container{
+            width: 100%;
+            height: 95vh;
+            padding: 5px;
+            display: flex;
+        }
+        
+        .left, .right{
+            flex-basis: 50%;
+            padding: 10px;
+        }
+        
+        .left{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .left .box{
+            height: 28vh;
+        }
+        
+        textarea{
+            width: 100%;
+            height: 100%;
+            resize: none;
+            background-color: #0f0f0f;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            border-radius: 0px 0px 5px 5px;
+        }
+        
+        textarea:focus{
+            background-color: #2f2e2e;
+            color: #fefafa;
+        }
+        
+        iframe{
+            width: 100%;
+            height: 100%;
+            background-color: #0f0f0f;
+            border: none;
+            outline: none;
+            border-radius: 0px 0px 5px 5px;
+        }
+        
+        label i {
+            margin: 0 10px;
+        }
+        
+        label{
+            display: flex;
+            align-items: center;
+            background-color: #948f8f;
+            color: rgb(52, 2, 2);
+            font-weight: bold;
+            height: 30px;
+            border-radius: 5px 5px 0px 0px;
+        
+        }
+        
+        .fa-brands, .fa-solid{
+            color: rgb(9, 9, 9);
+        }
+        
+    </style>
+</head>
+<body>
+
+        <div class="container">
+            <div class="left">
+                <div class="box">
+                    <label for="" ><i class="fa-brands fa-html5"></i>HTML</label>
+                    <textarea id="html-code" onkeyup="run()"></textarea>
+                </div>
+
+                <div class="box">
+                    <label for="" ><i class="fa-brands fa-css3-alt"></i>CSS</label>
+                    <textarea id="css-code" onkeyup="run()"></textarea>
+                </div>
+
+                <div class="box">
+                    <label for="" ><i class="fa-brands fa-js"></i>JavaScript</label>
+                    <textarea id="js-code" onkeyup="run()"></textarea>
+                </div>
+            </div>
+
+            <div class="right">
+                <label for="" ><i class="fa-solid fa-play"></i>Output</label>
+                <iframe id="output"></iframe>
+            </div>
+
+        </div>
+    <script>
+        function run(){
+
+        let htmlCode = document.getElementById("html-code").value;
+        let cssCode = document.getElementById("css-code").value;
+        let jsCode = document.getElementById("js-code").value;
+        let outPut = document.getElementById("output");
+    
+        outPut.contentDocument.body.innerHTML = htmlCode + "<style>" + cssCode + "</style>";
+        outPut.contentWindow.eval(jsCode);
+    
+    }</script>
+</body>
+</html>

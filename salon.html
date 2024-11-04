@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>KSP SALON</title>
+        <link rel="icon" href="Capture.JPG">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <style>
+            *{
+                margin: 0%;
+                padding: 0%;
+            }
+            #banner{
+                background-image:linear-gradient(rgba(0,0,0,0.5),#009688), url('https://www.sanctuarysalondayspa.com/wp-content/uploads/2019/08/02.jpg');
+                background-position: center;
+                background-size: cover;
+                height: 100vh;
+            }
+            .banner-text{
+                text-align: center;
+                color: whitesmoke;
+                padding-top: 180px;
+            }
+            .banner-text h1{
+                font-size: 100px;
+                
+            }
+            .banner-text p{
+                font-size: 60px;
+                font-style: italic;
+                text-transform: lowercase;
+            }
+            #menu_img{
+                top: 2%;
+                position: absolute;
+                right: 5px;
+                cursor: pointer;
+            }
+            #menu_img img{
+                width: 50px;
+                height: 50px;
+            }
+            #sidenav{
+                position: absolute;
+                top: 70px;
+                right: 5px;
+                display: none;
+            }
+            .sidenav ul {
+                list-style-type: none;
+                margin: 5px;
+                padding: 5px;
+                width: 300px;
+                background-color:rgb(209, 239, 247);
+            }
+            .sidenav li a {
+                display: block;
+                color: rgb(0, 0, 10);
+                font-size:30px;
+                padding: 8px 16px;
+                text-decoration: none;
+                font-weight: 500px;
+            }
+            .sidenav .active{
+                background-color: rgb(245, 194, 101);
+                color: rgb(5, 2, 2);
+            }
+            .sidenav li a:hover {
+                background-color: orange;
+                color: white;
+            }
+            
+            /*service*/
+            h2{
+                color: black;
+                padding: 2% 0%;
+                font-size: 60px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-weight: 100px;
+                text-align: center;
+            }
+            h2+p{
+                font-size: 45px;
+                color: rgb(27, 3, 65);
+                font-style: italic;
+                text-align: center;
+                font-weight: 80px;
+            }
+            .service{
+                width: 100%;
+                height: 130vh;
+                background: #e9ebea;
+            }
+            .service-box{
+                width: 80%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                margin: auto;
+            }
+            .single-servicebox{
+                flex-basis: 48%;
+                text-align: center;
+                border-radius: 7px;
+                margin-bottom: 5%;
+                color: #fff;
+                position: relative;
+            }
+            .single-servicebox img{
+                width: 80%;
+                height: 80%;
+                border-radius: 7px;
+            }
+            .overlay{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                border-radius: 7px;
+                cursor: pointer;
+                background:linear-gradient(rgba(0,0,0,0.5),#009688);
+                opacity: 0;
+                transition: 1s;
+            }
+            .single-servicebox .overlay:hover{
+                opacity: 1;
+            }
+            .service-desc{
+                width: 80%;
+                position: absolute;
+                bottom: 0%;
+                left: 50%;
+                opacity: 0;
+                transform: translateX(-50%);
+                transition: 1s;
+            }
+            .service-desc ul{
+                align-items: center;
+                list-style-type: none;
+            }
+            .service-desc li,h3{
+                font-size: 20px;
+                font-weight: 600;
+            }
+            .single-servicebox:hover .service-desc{
+                bottom: 40%;
+                opacity: 1;
+                background-color: #09af9f;
+            }
+
+            /*testimonial*/
+            .testimonial{
+                width: 100%;
+                height: 100%;
+                padding: 40px 0px;
+                background-color: rgb(245, 244, 243);
+            }
+            .testimonial-row{
+                width: 80%;
+                height: 80%;
+                margin-top: 60px;
+                margin-left: 100px;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                flex-wrap: wrap;
+            }
+            .testimonial-col{
+                flex-basis: 28%;
+                margin-bottom: 30px;
+                padding: 15px;
+                border-radius: 5px;
+                box-shadow: 0px 10px 20px 30px rgb(197, 195, 195);
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                transition: transform .5s;
+            }
+            .testimonial-col img{
+                width: 50px;
+                height: 50px;
+                border: 2px;
+                border-radius: 30px;
+                border-color: black;
+                border-style: solid;
+            }
+            figure{
+                display: flex;
+                flex-direction: row;
+            }
+            figcaption{
+                font-size: 20px;
+                font-weight: 200;
+                text-align: center;
+            }
+            .testimonial-col p{
+                font-size: 20px;
+                font-weight: 300;
+                font-family: 'Times New Roman', Times, serif;
+                background-color:#009688;
+                color: whitesmoke;
+            }
+            .testimonial-col:hover{
+                transform: translateY(6px);
+            }
+            /*footer*/
+            #footer{
+                padding: 100px 0px 20px;
+                background-color: rgb(192, 153, 120);
+                position: relative;
+            }
+            .footer-row{
+                width: 80%;
+                margin: 0% auto;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            .footer-left,.footer-right{
+                flex-basis: 45%;
+                padding: 10px;
+                margin-bottom: 20px;
+            }
+            .footer-right{
+                text-align: right;
+            }
+            .footer-row h1{
+                margin: 10px 0px;
+            }
+            .footer-row p{
+                line-height: 35px;
+            }
+            .footer-left i,.footer-right i{
+                font-size: 20px;
+                color: #012a26;
+                margin: 10px;
+            }
+            .imgontext{
+                max-width: 370px;
+                opacity: 0.1;
+                position: absolute;
+                left: 45%;
+                top: 40%;
+                transform: translate(-50%,-50%);
+            }
+            .social-links{
+                text-align: center;
+            }
+            .social-links i{
+                width: 40px;
+                height: 40px;
+                border: 3px solid #012a26;
+                font-size: 40px;
+                line-height: 40px;
+                margin: 40px 5px 0px;
+                color: white;
+                background-color: #021614;
+                cursor: pointer;
+            }
+            .social-links i:hover{
+                background-color: white;
+                color: #021614;
+                transform: translateY(-7px);
+            }
+
+        </style>
+    </head>
+    <body>
+        <section id="banner">
+            <div class="logo">
+                <img src="Capture.jpg" alt="SNEGA">
+            </div>
+            <div class="banner-text">
+                <h1>WAKE UP AND MAKEUP</h1>
+                <p>YOU DESERVE TO BE BEAUTIFUL</p>
+            </div>
+            <div id="menu_img">
+                <img src="https://i.pinimg.com/originals/26/9d/d1/269dd16fa1f5ff51accd09e7e1602267.png" id="menu_icon">
+            </div>
+            <div class="sidenav" id="sidenav">
+                <ul>
+                    <li><a href="#banner" class = "active">Home</a></li>
+                    <li><a href = "#service">Service</a></li>
+                    <li><a href = "#testimonial">Testimonial</a></li>
+                    <li><a href = "#footer">Contact</a></li>
+                </ul>
+            </div>
+        </section>
+        <!--services-->
+        <section class="service" id="service">
+            <div class="service-text">
+                <h2>SERVICES</h2>
+                <p>We Provide Better</p>
+            </div>
+                <div class="service-box">
+                    <div class="single-servicebox">
+                        <img src="https://media.istockphoto.com/id/921797424/photo/woman-in-mask-on-face-in-spa-beauty-salon.jpg?s=612x612&w=0&k=20&c=gGSPZOjIS2wcwQyOcjANOKpRVU0KR_iEDbRACnAoIXA=">
+                        <div class="overlay"></div>
+                        <div class="service-desc">
+                            <h3>Facial</h3>
+                            <hr>
+                            <ul>
+                                <li>Classical Facial - $10  <s>$20</s></li>
+                                <li>De-tan pack - $12  <s>$22</s> </li>
+                                <li>Brightening Facial - $15  <s>$25</s></li>
+                                <li>Microdermabrasion Facial - $20  <s>$30</s></li>
+                                <li>Golden Facial - $25  <s>$35</s></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="single-servicebox">
+                        <img src="https://www.weddingsutra.com/images/Vendor_Images/mua/mua-ashmieta/muaashmieta-07.jpg">
+                        <div class="overlay"></div>
+                        <div class="service-desc">
+                            <h3>Bridal Makeover</h3>
+                            <hr>
+                            <ul>
+                                <li> HD Makeup - $15  <s>$25</s></li>
+                                <li>Matte Makeup Look - $20  <s>$30</s></li>
+                                <li>Airbrush Makeup - $25  <s>$35</s></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="single-servicebox">
+                        <img src="https://media.istockphoto.com/id/640274128/photo/barber-using-scissors-and-comb.jpg?s=612x612&w=0&k=20&c=mjdP6NhDA40WBorr8kyyI69waMs1EyzLkSmT6lQRvGU=">
+                        <div class="overlay"></div>
+                        <div class="service-desc">
+                            <h3>Hairstyling</h3>
+                            <hr>
+                            <ul>
+                                <li>Hair Color - $10  <s>$20</s></li>
+                                <li>Bangs - $12  <s>$22</s> </li>
+                                <li>Feather Cut - $15  <s>$25</s></li>
+                                <li>Fringe Cut - $10  <s>$20</s></li>
+                                <li>Textured HairCut - $25  <s>$35</s></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="single-servicebox">
+                        <img src="https://img.freepik.com/free-photo/attractive-african-woman-enjoying-face-massage-spa-salon_176420-13955.jpg?size=626&ext=jpg&ga=GA1.1.1412446893.1704758400&semt=sph">
+                        <div class="overlay"></div>
+                        <div class="service-desc">
+                            <h3>Spa and Massage</h3>
+                            <hr>
+                            <ul>
+                                <li>Swedish Massage - $12  <s>$22</s> </li>
+                                <li>Hot Stone Massage - $15  <s>$25</s></li>
+                                <li>Deep Tissue Massage - $20  <s>$30</s></li>
+                                <li>Trigger Point Massage - $25  <s>$35</s></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!--Testimonial-->
+        <section class="testimonial" id="testimonial">
+            <div class="service-text">
+                <h2>TESTIMONIAL</h2>
+                <p>What Client Says.......</p>
+            </div>
+            <div class="testimonial-row">
+                <div class="testimonial-col">
+                    <figure>
+                        <img src="https://cdn.pixabay.com/photo/2014/04/02/17/07/user-307993_1280.png">
+                        <figcaption>@karthic kumari</figcaption>
+                    </figure>
+                   <p>The massage oils, facial creams, and all other beauty products they use are of top quality. All massage therapists and technicians are highly skilled.  </p>
+                </div>
+                <div class="testimonial-col">
+                    <figure>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeTSS-IfO-Yw-ZUQ2fVA2zMvtuq2pN3pf46A&usqp=CAU">
+                        <figcaption>@deepa_kumar</figcaption>
+                    </figure>
+                   <p>The staff is friendly, warm, and cooperative. They greet me with happy faces all the time. No matter which eyebrow threader I choose, I get the same shape every time with the utmost perfection.</p>
+                </div>
+                <div class="testimonial-col">
+                    <figure>
+                        <img src="https://c0.wallpaperflare.com/preview/276/301/198/avatar-people-person-business.jpg">
+                        <figcaption>@kumar23</figcaption>
+                    </figure>
+                   <p> They provided me with the best herbal facial for my acne-prone skin. I haven’t seen any breakouts since a month after the facial. I strongly refer them to anyone with damaged or acne-prone skin.</p>
+                </div>
+
+            </div>
+
+        </section>
+        <!--footer-->
+        <section id="footer">
+            <div class="imgontext">
+                <img src="https://www.bhmpics.com/downloads/beardo-Wallpapers/2.450c591162c24b374b6388555fc55cf4.jpg" class="imgtext">
+            </div>
+            <div class="service-text">
+                <h2>CONTACT</h2>
+                <p>Visit Shop Today</p>
+            </div>
+            <div class="footer-row">
+                <div class="footer-left">
+                    <h1>Opening Hours</h1>
+                    <p><i class="fa-solid fa-clock"></i>    Monday To Friday - 8 am to 9pm</p>
+                    <p><i class="fa-solid fa-clock"></i>    Saturday And Sunday - 9 am to 10 pm</p>
+                </div>
+                <div class="footer-right">
+                    <h1>Get In Touch</h1>
+                    <p><i class="fa-solid fa-location-dot"></i>     A4/5,New Police Quarters,Round Road,Dindigul</p>
+                    <p><i class="fa-solid fa-envelope"></i>     snegapriya4@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i>       6369632225</p>
+                </div>
+            </div>
+            <div class="social-links">
+                <i class="fa-brands fa-square-instagram"></i>
+                <i class="fa-brands fa-square-twitter"></i>
+                <i class="fa-brands fa-facebook"></i>
+            </div>
+        </section>
+        <script>
+            var sidenav = document.getElementById("sidenav");
+            var menu_img = document.getElementById("menu_img");
+            var menu_icon = document.getElementById("menu_icon");
+
+            menu_img.onclick = function(){
+                if(sidenav.style.display == "block"){
+                    sidenav.style.display = "none";
+                    menu_icon.src="https://i.pinimg.com/originals/26/9d/d1/269dd16fa1f5ff51accd09e7e1602267.png";
+
+                }
+                else{
+                    sidenav.style.display = "block";
+                    menu_icon.src="https://i.pinimg.com/736x/de/83/c0/de83c05e0dcfb01adb78441e84ed6d8b.jpg";
+
+                }
+            }
+
+        </script>
+    </body>
+</html>
